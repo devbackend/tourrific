@@ -21,12 +21,9 @@ Route::get('user', function(){
     return View::make('user');
 });
 
-Route::get('sign', function(){
+Route::get('/sign', 'UserController@viewForm');
+Route::post('/sign', 'UserController@saveProfile');
 
-    return View::make('register');
-});
+Route::post('/login', 'UserController@login');
 
-Route::get('map', function(){
-
-    return View::make('map');
-});
+Route::get('/logout', 'UserController@logout');
