@@ -6,7 +6,7 @@
 </head>
 <body>
     {{ Form::open(array('url' => 'sign')) }}
-    <?
+    <?php
       echo Form::label('user_login', 'Логин:');
       echo Form::text('user_login');
 
