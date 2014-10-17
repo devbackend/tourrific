@@ -11,7 +11,7 @@
       echo Form::text('user_login');
 
       echo Form::label('user_pass', 'Пароль');
-      echo Form::text('user_pass');
+      echo Form::password('user_pass');
 
       echo Form::label('user_email', 'Адрес e-mail');
       echo Form::text('user_email');
