@@ -27,12 +27,12 @@ class UserController extends BaseController
         $userDataValidate = Validator::make(
             array(
                 'login' => $user_login,
-                'pass' => $user_pass,
+                'password' => $user_pass,
                 'email' => $user_email
             ),
             array(
                 'login' => 'required|min:4|unique:users',
-                'pass' => 'required|min:6',
+                'password' => 'required|min:6',
                 'email' => 'required|email|unique:users'
             )
         );
@@ -43,7 +43,7 @@ class UserController extends BaseController
         $user = new User();
 
         $user->login = $user_login;
-        $user->pass  = Hash::make($user_pass);
+        $user->password  = Hash::make($user_pass);
         $user->email = $user_email;
 
         $user->save();
@@ -59,21 +59,24 @@ class UserController extends BaseController
         $login = Input::get('login');
         $pass  = Input::get('pass');
 
-        $user = User::where('login', '=', $login)->first();
-        if(count($user) == 0)
-            exit('Неверный пользователь');//return View::make('loginError');
+        $emailCheck = Validator::make(
+            array('email' => $login),
+            array('email' => 'email')
+        );
 
-        if(!Hash::check($pass, $user->pass))
-            exit('Неверный пароль: <br />'.Hash::make($pass).'<br />'.$user->pass);//return View::make('loginError');
+        $authField = 'email';
+        if($emailCheck->fails())
+            $authField = 'login';
 
-        Session::push('auth_login', $login);
-        Session::push('auth_status', true);
+        if (Auth::attempt(array($authField => $login, 'password' => $pass)))
+            return Redirect::intended();
+
+        return View::make('loginError');
     }
 
     public function logout()
     {
-        Session::forget('auth_login');
-        Session::push('auth_status', false);
+        Auth::logout();
 
         return Redirect::to('/');
     }
