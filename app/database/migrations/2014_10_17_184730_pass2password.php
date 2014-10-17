@@ -25,7 +25,10 @@ class Pass2password extends Migration {
 	 */
 	public function down()
 	{
-		//
+        // Изменяем поле pass на password в таблице users
+        Schema::table('users', function($table) {
+            $table->renameColumn('password', 'pass');
+        });
 	}
 
 }
