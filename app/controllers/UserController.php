@@ -48,10 +48,9 @@ class UserController extends BaseController
 
         $user->save();
 
-        Session::push('auth_login', $user_login);
-        Session::push('auth_status', true);
+        Auth::loginUsingId($user->id);
 
-        return View::make('signSuccess');
+        return Redirect::to('/profile');
     }
 
     public function login()
@@ -79,5 +78,48 @@ class UserController extends BaseController
         Auth::logout();
 
         return Redirect::to('/');
+    }
+
+    public function profile()
+    {
+        if(!Auth::check())
+            return Redirect::to('/');
+
+        return View::make('profileView', array('username' => Auth::user()->login,
+                                               'firstname' => Auth::user()->first_name,
+                                               'lastname' => Auth::user()->last_name,
+                                               'about' => Auth::user()->about_me,
+                                              ));
+    }
+
+    public function editProfile()
+    {
+        $newPassword = Input::get('new_pssword');
+        $first_name = Input::get('first_name');
+        $last_name = Input::get('last_name');
+        $about = Input::get('about_me');
+
+        $user = User::find(Auth::user()->id);
+
+        if(strlen($newPassword) != 0)
+        {
+            $userValidateNewPassword = Validator::make(
+                array('password' => $newPassword),
+                array('password' => 'required|min:6')
+            );
+
+            if($userValidateNewPassword->fails())
+                return View::make('editProfileError');
+
+            $user->password  = Hash::make($newPassword);
+        }
+
+        $user->first_name = $first_name;
+        $user->last_name = $last_name;
+        $user->about_me = $about;
+
+        $user->save();
+
+        return Redirect::to('/profile');
     }
 } 

@@ -27,3 +27,7 @@ Route::post('/sign', 'UserController@saveProfile');
 Route::post('/login', 'UserController@login');
 
 Route::get('/logout', 'UserController@logout');
+
+Route::get('/profile', 'UserController@profile');
+
+Route::post('/profile/edit', 'UserController@editProfile');
