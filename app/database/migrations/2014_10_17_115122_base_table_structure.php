@@ -24,7 +24,7 @@ class BaseTableStructure extends Migration {
             $table->string('login', 32)->unique();
             $table->string('password', 64);
             $table->string('email', 255)->unique();
-	        $table->integer('user_group')->unsigned();
+	        $table->integer('user_group')->unsigned()->default(3);
 	        $table->string('first_name');
 	        $table->string('last_name');
 	        $table->text('about_me');
