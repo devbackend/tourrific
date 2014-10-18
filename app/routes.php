@@ -49,4 +49,6 @@ Route::get('/place/new', function() {
 Route::post('/place/save', array('as'=>'place.save', 'uses' => 'PlaceController@savePlace'));
 
 Route::model('place','Place');
-Route::get('/place/{place}', 'PlaceController@showPlace');
+Route::get('place/{place}', 'PlaceController@showPlace');
+
+Route::post('/photo', 'PhotoController@photoLoad');
