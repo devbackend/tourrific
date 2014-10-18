@@ -135,6 +135,7 @@ class BaseTableStructure extends Migration {
 				array('id' => 1, 'model'=>'Place'),
 				array('id' => 2, 'model'=>'PlacePhoto'),
 				array('id' => 3, 'model'=>'Users'),
+				array('id' => 4, 'model'=>'Blog'),
 			)
 		);
 	}

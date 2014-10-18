@@ -65,3 +65,5 @@ Route::post('/photo', 'PhotoController@photoLoad');
 Route::post('/addcomment', 'CommentController@add');
 
 Route::controller('rate', 'RateController');
+Route::controller('blog', 'BlogController');
+Route::controller('api', 'ApiController');
