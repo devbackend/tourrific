@@ -7,6 +7,7 @@
 <body>
 	<h2>{{$place->title}}</h2>
 	{{$category->title}}<br>
+	<a href="/places/iwashere">Я здесь был</a>
 	<h3>Описание:</h3>
 	{{$place->description}}<br>
 	<div id="map" style="width: 600px; height: 400px"></div>
