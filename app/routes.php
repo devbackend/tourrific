@@ -47,3 +47,6 @@ Route::get('/place/new', function() {
 	return View::make('place/edit', array('place'=>$place));
 });
 Route::post('/place/save', array('as'=>'place.save', 'uses' => 'PlaceController@savePlace'));
+
+Route::model('place','Place');
+Route::get('/place/{place}', 'PlaceController@showPlace');

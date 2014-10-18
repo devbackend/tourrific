@@ -13,6 +13,7 @@ class Place extends Eloquent {
 	public function validate() {
 		$validator = Validator::make(
 			array(
+				'id'          => $this->id,
 				'title'       => $this->title,
 				'description' => $this->description,
 				'category'    => $this->category,
@@ -20,14 +21,18 @@ class Place extends Eloquent {
 				'lon'         => $this->lon
 			),
 			array(
-				'title'       => 'required|unique:places',
+				'id'          => '',
+				'title'       => 'required',
 				'description' => '',
 				'category'    => 'required|exists:places_categories,id',
 				'lat'         => 'required|numeric',
 				'lon'         => 'required|numeric'
 			)
 		);
+		$validator->sometimes('title','unique:places',function($input) {
+			return $input->id == 0;
+		});
 		return $validator;
 	}
 
-} 
+}
