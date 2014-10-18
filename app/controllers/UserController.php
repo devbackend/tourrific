@@ -99,6 +99,13 @@ class UserController extends BaseController
         $last_name = Input::get('last_name');
         $about = Input::get('about_me');
 
+        if(Input::hasFile('avatar'))
+        {
+            $avatar = Input::file('avatar');
+            $filename = 'avatar_'.Auth::user()->id.'.'.$avatar->getClientOriginalExtension();
+            $avatar->move(public_path().'/upload/avatar/', $filename);
+        }
+
         $user = User::find(Auth::user()->id);
 
         if(strlen($newPassword) != 0)
