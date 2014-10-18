@@ -28,6 +28,22 @@ Route::post('/login', 'UserController@login');
 
 Route::get('/logout', 'UserController@logout');
 
+
 Route::get('/profile', 'UserController@profile');
 
 Route::post('/profile/edit', 'UserController@editProfile');
+
+Route::get('/place/edit/{id}', function($id) {
+	if ($id==0) {
+		$place = new Place();
+	} else {
+		$place = Place::find($id);
+	}
+	return View::make('place/edit', array('place'=>$place));
+});
+
+Route::get('/place/new', function() {
+	$place = new Place();
+	return View::make('place/edit', array('place'=>$place));
+});
+Route::post('/place/save', array('as'=>'place.save', 'uses' => 'PlaceController@savePlace'));
