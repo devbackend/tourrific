@@ -33,4 +33,13 @@ class PlaceController extends BaseController {
 		$category = PlacesCategories::find($place->category);
 		return View::make('place/show', array('place'=>$place, 'category'=>$category));
 	}
+
+    public function generateYoutubeFrame($link)
+    {
+        $youtube_pcre = '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i';
+        if(!preg_match($youtube_pcre, $link, $match))
+            return '';
+
+        return $match[1];
+    }
 }

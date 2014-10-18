@@ -6,8 +6,8 @@
  * Time: 14:40
  */
 
-class PlacePhotos extends Eloquent {
+class PlaceMedia extends Eloquent {
 
-    protected $table = 'place_photos';
+    protected $table = 'place_media';
 
 } 

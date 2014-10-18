@@ -92,7 +92,7 @@ class BaseTableStructure extends Migration {
 			$table->increments('id');
 			$table->integer('place_id')->unsigned();
 			$table->integer('user_id')->unsigned();
-			$table->string('name', 64);
+			$table->string('media_data', 255);
 			$table->integer('enable')->default(0);
 			$table->float('rate');
 			$table->timestamps();
