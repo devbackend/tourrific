@@ -28,8 +28,17 @@ Route::post('/login', 'UserController@login');
 
 Route::get('/logout', 'UserController@logout');
 
+Route::model('user', 'User');
 
-Route::get('/profile', 'UserController@profile');
+Route::get('/user/{user}', 'UserController@profile');
+
+Route::get('/profile', function() {
+	if(Auth::check()) {
+		$user = Auth::user();
+	}
+	$request = Request::create('/user/'.$user->id, 'GET');
+	return Route::dispatch($request)->getContent();
+});
 
 Route::post('/profile/edit', 'UserController@editProfile');
 

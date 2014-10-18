@@ -1,6 +1,6 @@
 <?php
 
-class User extends Eloquent {
+class UserToPlaces extends Eloquent {
 
 	protected $table = 'user_places';
 

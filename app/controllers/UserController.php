@@ -81,16 +81,16 @@ class UserController extends BaseController
         return Redirect::to('/');
     }
 
-    public function profile()
+    public function profile($user)
     {
-        if(!Auth::check())
-            return Redirect::to('/');
+	    $can_edit = false;
+        if(!Auth::check() && Auth::user()->id==$user->id)
+	        $can_edit = true;
 
-        return View::make('profileView', array('username' => Auth::user()->login,
-                                               'firstname' => Auth::user()->first_name,
-                                               'lastname' => Auth::user()->last_name,
-                                               'about' => Auth::user()->about_me,
-                                              ));
+	    $user_places = UserToPlaces::where('user_id', '=', $user->id);
+
+
+        return View::make('profileView', array('user' => $user, 'can_edit'=>$can_edit, 'user_places'=>$user_places));
     }
 
     public function editProfile()

@@ -1,21 +1,24 @@
-<h2>{{$username}}</h2>
+<html>
+	<head>
 
-{{ Form::open(array('url' => 'profile/edit')) }}
-    <?php
+	</head>
+	<body>
+		<h2>{{$user->login}}</h2>
+		{{$user->description}}
 
-      echo Form::label('change_pass', 'Сменить пароль');
-      echo Form::password('new_password');
+		<div id="myMap"></div>
 
-      echo Form::label('first_name', 'Имя');
-      echo Form::text('first_name', $firstname);
+		<script>
+			ymaps.ready(init);
+			var myMap;
 
-      echo Form::label('last_name', 'Фамилия');
-      echo Form::text('last_name', $lastname);
+			function init(){
+				myMap = new ymaps.Map("map", {
+					center: [1, 1],
+					zoom: 7
+				});
 
-      echo Form::label('about_me', 'Обо мне');
-      echo Form::textarea('about_me', $about);
-
-      echo Form::submit('Сохранить');
-
-    ?>
-{{ Form::close() }}
+			}
+		</script>
+	</body>
+</html>
