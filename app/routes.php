@@ -67,3 +67,6 @@ Route::post('/addcomment', 'CommentController@add');
 Route::controller('rate', 'RateController');
 Route::controller('blog', 'BlogController');
 Route::controller('api', 'ApiController');
+
+Route::post('/comment/send', 'CommentController@addComment');
+Route::get('/comments/{model_id}/{instance_id}', 'CommentController@commentList');

@@ -124,6 +124,7 @@ class BaseTableStructure extends Migration {
 			$table->integer('module_id')->unsigned();
 			$table->integer('instance_id');
 			$table->integer('user_id');
+            $table->integer('pid')->default(0);
 			$table->text('comment');
 			$table->timestamps();
 			$table->foreign('module_id')->references('id')->on('models');
