@@ -61,3 +61,7 @@ Route::model('place','Place');
 Route::get('place/{place}', 'PlaceController@showPlace');
 
 Route::post('/photo', 'PhotoController@photoLoad');
+
+Route::post('/addcomment', 'CommentController@add');
+
+Route::controller('rate', 'RateController');

@@ -19,6 +19,7 @@ class PhotoController extends BaseController {
         $placePhoto = new PlacePhotos();
 
         $placePhoto->place_id = $placeId;
+        $placePhoto->user_id = Auth::user()->id;
         $placePhoto->name = $filename;
 
         $placePhoto->save();

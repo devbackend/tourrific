@@ -45,7 +45,6 @@ class UserController extends BaseController
         $user->login = $user_login;
         $user->password  = Hash::make($user_pass);
         $user->email = $user_email;
-        $user->user_group = 3;
 
         $user->save();
 
