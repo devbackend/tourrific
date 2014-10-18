@@ -57,10 +57,10 @@ Route::get('/place/new', function() {
 });
 Route::post('/place/save', array('as'=>'place.save', 'uses' => 'PlaceController@savePlace'));
 
-Route::model('place','Place');
+Route::model('place','Place', function(){ exit('Place not found'); });
 Route::get('place/{place}', 'PlaceController@showPlace');
 
-Route::post('/photo', 'PhotoController@photoLoad');
+Route::post('/photo', 'MediaController@photoLoad');
 
 Route::post('/addcomment', 'CommentController@add');
 

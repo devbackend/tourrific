@@ -10,6 +10,9 @@ class MediaController extends BaseController {
 
     public function photoLoad()
     {
+        if(!Auth::check())
+            return 'Добавлять фотографии могут только зарегистрированные пользователи';
+
         $file = Input::file('photo');
         $placeId = Input::get('place_id');
         $filename = md5('photo_'.$placeId.'_'.time().Auth::user()->id).'.'.$file->getClientOriginalExtension();
