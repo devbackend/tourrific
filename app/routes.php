@@ -13,7 +13,13 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('template', array('title'=>'Интересные места Приморья - Tourrific.ru', 'content'=>'<div class="wrapper">
+				<h1>Приморский край</h1>
+				<hr/>
+			</div><div class="wrapper">
+				<h1>Приморский край</h1>
+				<hr/>
+			</div>'));
 });
 
 Route::get('user', function(){
@@ -66,7 +72,7 @@ Route::post('/addcomment', 'CommentController@add');
 
 Route::controller('rate', 'RateController');
 Route::controller('blog', 'BlogController');
-Route::controller('api', 'ApiController');
+
 
 Route::post('/comment/send', 'CommentController@addComment');
 Route::get('/comments/{model_id}/{instance_id}', 'CommentController@commentList');
