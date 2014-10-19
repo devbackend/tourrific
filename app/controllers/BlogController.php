@@ -25,4 +25,11 @@ class BlogController extends BaseController
         return View::make('blog.list', array($blogList));
     }
 
+    public function getLists()
+    {
+        $blogList = Blog::orderBy('created_at', 'desc')->get();
+
+        return View::make('template', array('title' => 'блоги'))->nest('content', 'blog.list', array('blogList' => $blogList));
+    }
+
 } 

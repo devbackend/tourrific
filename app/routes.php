@@ -27,6 +27,8 @@ Route::get('user', function(){
     return View::make('user');
 });
 
+Route::get('/users', 'UserController@allUsers');
+
 Route::get('/sign', 'UserController@viewForm');
 Route::post('/sign', 'UserController@saveProfile');
 

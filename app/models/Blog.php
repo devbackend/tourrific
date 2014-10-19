@@ -1,6 +1,6 @@
 <?php
 
-class Blog extends EloquentUserProvider
+class Blog extends Eloquent
 {
     protected $table = 'blog';
 
