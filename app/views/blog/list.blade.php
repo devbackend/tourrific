@@ -2,7 +2,7 @@
 @forelse($blogList as $blog)
       <div class="blog_element">
         <div class="blog_image">
-            <img src="{{ $blog->image }}" alt="{{ $blog->title }}" />
+            <img src="{{{ url('/', $parameters = array(), $secure = null) }}}/images/blog150х150.jpg" alt="{{ $blog->title }}" />
         </div>
         <div class="blog_content">
             <div class="blog_date">12.10.2014</div>
