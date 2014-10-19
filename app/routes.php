@@ -60,13 +60,17 @@ Route::post('/place/save', array('as'=>'place.save', 'uses' => 'PlaceController@
 Route::model('place','Place', function(){ exit('Place not found'); });
 Route::get('place/{place}', 'PlaceController@showPlace');
 
-Route::post('/photo', 'MediaController@photoLoad');
+Route::controller('media', 'MediaController');
 
-Route::post('/addcomment', 'CommentController@add');
+//test
+Route::get('/comment', function() {
+    return View::make('comment', array('module_id' => 1, 'instance_id' => 1));
+});
 
 Route::controller('rate', 'RateController');
 Route::controller('blog', 'BlogController');
-Route::controller('api', 'ApiController');
+Route::controller('api',  'ApiController');
 
+Route::get('/comment/{model_id}/{instance_id}', 'CommentController@commentList');
 Route::post('/comment/send', 'CommentController@addComment');
-Route::get('/comments/{model_id}/{instance_id}', 'CommentController@commentList');
+
