@@ -34,7 +34,7 @@ class MediaController extends BaseController {
         $placeMedia->save();
     }
 
-    public function postVideo()
+    public function videoLoad()
     {
         $video   = Input::get('youtube_link');
         $placeId = Input::get('place_id');

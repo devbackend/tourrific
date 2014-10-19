@@ -7,6 +7,7 @@ html
 {
     font-family : Arial, sans-serif;
     font-size   : 12px;
+    color       : #292929;
 }
 
 hr
@@ -160,8 +161,22 @@ h1
     padding-bottom : 50px;
 }
 
+.sidebar {
+    width: 140px;
+    float:left;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.content .main {
+    float:left;
+    margin-top: 15px;
+    width: 960px;
+}
+
 .footer
 {
+    clear      : both;
     margin-top : -50px;
     width      : 100%;
     color      : #ffffff;
@@ -173,6 +188,101 @@ h1
 {
     float      : right;
     margin-top : 19px;
+}
+
+.sidebar_menu li a {
+    display: block;
+    font-size: 16px;
+    border-top: 1px solid #cccccc;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #292929;
+}
+
+.content p {
+    margin-bottom: 0.5em;
+}
+
+.content p + p {
+    text-indent: 1.5em;
+    margin-top: 0;
+}
+
+.place_column {
+    float: left;
+    margin-right: 10px;
+    width: 300px;
+}
+
+.place_column .rate {
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.place_column .was_here {
+    border-right: 1px solid #CCCCCC;
+}
+
+.rate a {
+    color: #292929;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.rate a i {
+    width: 30px;
+    height: 30px;
+    background-image: url('../images/place_sprite.png');
+    display: inline-block;
+}
+
+.rate a i.vote_up {
+    background-position: -32px 0;
+}
+
+a.button {
+    display: block;
+}
+
+a.button.blue {
+    width: 280px;
+    height: 15px;
+    padding: 10px;
+    background: #2579bf;
+    font-size: 14px;
+    color: #FFF;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+.was_here a {
+    color: #999999;
+    text-decoration: none;
+}
+
+.was_here a span {
+    border-bottom: 1px dashed #999;
+}
+
+i.i_was_here, i.i_wanna_go {
+    display: inline-block;
+    background: url('../images/place_sprite.png') -34px -56px;
+    width: 15px;
+    height: 15px;
+}
+i.i_wanna_go {
+    background-position: -51px -56px;
+}
+
+a.active i.i_was_here, a:hover i.i_was_here {
+    background-position: 0 -56px;
+}
+
+a.active i.i_wanna_go, a:hover i.i_wanna_go {
+    background-position: -17px -56px;
 }
 
 .blog_element

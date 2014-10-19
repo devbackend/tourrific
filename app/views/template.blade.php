@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>{{$title}}</title>
+	<title>{{$title}} - Tourrific</title>
+
+	<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
 
 	{{HTML::style('css/reset.css')}}
 	{{HTML::style('css/style.css')}}

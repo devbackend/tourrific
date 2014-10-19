@@ -31,7 +31,7 @@ class PlaceController extends BaseController {
 
 	public function showPlace($place) {
 		$category = PlacesCategories::find($place->category);
-		return View::make('place/show', array('place'=>$place, 'category'=>$category));
+		return View::make('template', array('title'=>$place->title))->nest('content', 'place/show', array('place'=>$place, 'category'=>$category));
 	}
 
     public function generateYoutubeFrame($link)

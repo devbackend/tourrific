@@ -32,4 +32,4 @@ class BlogController extends BaseController
         return View::make('template', array('title' => 'блоги'))->nest('content', 'blog.list', array('blogList' => $blogList));
     }
 
-} 
+}
