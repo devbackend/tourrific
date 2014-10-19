@@ -86,10 +86,9 @@ class UserController extends BaseController
         if(!Auth::check() && Auth::user()->id==$user->id)
 	        $can_edit = true;
 
-	    $user_places = UserToPlaces::where('user_id', '=', $user->id);
+	    $places = $user->belongsToMany('Place', 'user_places', 'user_id', 'place_id')->withPivot(array('was_here'))->get();
 
-
-        return View::make('profileView', array('user' => $user, 'can_edit'=>$can_edit, 'user_places'=>$user_places));
+        return View::make('profileView', array('user' => $user, 'can_edit'=>$can_edit, 'places'=>$places));
     }
 
     public function editProfile()

@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: tsbgroup
- * Date: 19.10.14
- * Time: 10:30
- */ 
+@foreach ($result_list as $result)
+    @forelse($result as $r)
+          <p>{{ $r->title }}</p>
+    @empty
+          <p>Не найдено</p>
+    @endforelse
+@endforeach

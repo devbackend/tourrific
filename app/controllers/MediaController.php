@@ -8,7 +8,12 @@
 
 class MediaController extends BaseController {
 
-    public function photoLoad()
+    public function getPhoto($placeId)
+    {
+        return View::make('photo', array('place_id' => $placeId));
+    }
+
+    public function postPhoto()
     {
         if(!Auth::check())
             return 'Добавлять фотографии могут только зарегистрированные пользователи';
@@ -29,7 +34,7 @@ class MediaController extends BaseController {
         $placeMedia->save();
     }
 
-    public function videoLoad()
+    public function postVideo()
     {
         $video   = Input::get('youtube_link');
         $placeId = Input::get('place_id');

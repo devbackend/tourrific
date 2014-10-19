@@ -13,13 +13,13 @@ class CommentController extends BaseController {
 
         $comment->save();
 
-        Redirect::back();
+        return Redirect::back();
     }
 
     public function commentlist($model_id, $instance_id)
     {
         return Comment::whereRaw('module_id = ? && instance_id = ?', array($model_id, $instance_id))
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->take(20)
             ->get()
             ->toJson();
